@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "documentation_revision": "2026-11-16.1",
+  "runtime_version": "0.45",
+  "release_tag": "v0.45",
+  "repository": "https://github.com/appleyancheng-art/dali-toolkit",
+  "release_url": "https://github.com/appleyancheng-art/dali-toolkit/releases/tag/v0.45",
+  "latest_release_api": "https://api.github.com/repos/appleyancheng-art/dali-toolkit/releases/latest",
+  "source_commit": "b09d55a3f76340c0a92614136d906b0c6a5c1fcc",
+  "package": {
+    "name": "DALI-Toolkit-0.45-install.zip",
+    "url": "https://github.com/appleyancheng-art/dali-toolkit/releases/download/v0.45/DALI-Toolkit-0.45-install.zip",
+    "sha256": "fce7bc701d5e6a219a2ee8dbce8e62257feaaa74c173ec6f874b79f18e70c873",
+    "root": "DALI-Toolkit-0.45",
+    "source_manifest": "MANIFEST.sha256.json"
+  },
+  "platform": {
+    "os": "Windows",
+    "python": "3.12",
+    "dependencies": "mcp/requirements.lock.txt"
+  },
+  "mcp": {
+    "name": "dali_config",
+    "transport": "stdio",
+    "command": "{release_root}/mcp/.venv/Scripts/python.exe",
+    "args": [
+      "{release_root}/mcp/run_server.py",
+      "--config",
+      "{config_path}"
+    ],
+    "startup_timeout_seconds": 60,
+    "tool_timeout_seconds": 2400,
+    "expected_tool_count": 135,
+    "version_tool": "dali_status"
+  },
+  "verification": {
+    "offline_script": "mcp/tests/smoke_stdio.py",
+    "offline_args": [],
+    "success_marker": "Stdio OK: 135 tools",
+    "hardware_required": false,
+    "full_regression_required_for_install": false
+  },
+  "skills": [
+    {
+      "name": "dali-mcp-control",
+      "path": "skills/dali-mcp-control"
+    },
+    {
+      "name": "dali-config-computer-use",
+      "path": "skills/dali-config-computer-use",
+      "requires": "Client-provided Windows Computer Use and installed DALI Config Tool"
+    }
+  ],
+  "update": {
+    "strategy": "side-by-side",
+    "keep_existing_config_path": true,
+    "preserve": [
+      "config parent directory including state and gateways",
+      "client MCP configuration",
+      "installed Skills",
+      "old runtime directory",
+      "external project files and backups"
+    ],
+    "same_version_same_hash": "skip unless repair requested",
+    "migration": "Documentation-only revision; runtime and release packages unchanged. Future runtime releases must specify compatibility and rollback before activation."
+  }
+}
